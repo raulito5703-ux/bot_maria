@@ -1,4 +1,5 @@
 import random
+import os
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from telegram.ext import ApplicationBuilder, CommandHandler, CallbackQueryHandler, ContextTypes
 
@@ -25,7 +26,8 @@ async def boton(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await query.message.reply_text(random.choice(RESPUESTAS))
 
 if __name__ == "__main__":
-    app = ApplicationBuilder().token("8502908743:AAHeWw8UzyVDB7_M37mjZEAZySTgr2_xuHY").build()
+    app = ApplicationBuilder().token(os.getenv("BOT_TOKEN")).build()
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CallbackQueryHandler(boton))
     app.run_polling()
+
