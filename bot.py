@@ -35,10 +35,8 @@ def main():
         raise RuntimeError("BOT_TOKEN no está definido")
 
     app = Application.builder().token(token).build()
-
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CallbackQueryHandler(boton))
-
     app.run_polling()
 
 if __name__ == "__main__":
